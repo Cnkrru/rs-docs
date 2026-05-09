@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>rs-docs - Rust 第三方库文档</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a href="index.html" class="logo">
+      <svg viewBox="0 0 28 28" fill="none" width="28" height="28">
+        <rect x="2" y="2" width="24" height="24" rx="5" stroke="#ccc" stroke-width="2.5" fill="none"/>
+        <text x="14" y="20" text-anchor="middle" font-size="16" font-weight="bold" fill="#ccc">R</text>
+      </svg>
+      rs-docs<span> · Rust 第三方库文档集</span>
+    </a>
+    <button class="menu-toggle" id="menu-toggle" aria-label="切换菜单">&#9776;</button>
+  </nav>
+
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main-content">
+    <div class="content-wrapper" id="content">
+      <div style="text-align:center;padding:80px 0;color:#888;">加载中...</div>
+    </div>
+  </main>
+
+  <div id="loading-bar" style="
+    position:fixed;top:56px;left:0;height:3px;background:#de6a2b;z-index:200;
+    width:0;transition:width 0.3s ease;opacity:0;
+  "></div>
+
+  <footer class="site-footer">
+    <p>rs-docs &mdash; Rust 第三方库文档集 &nbsp;|&nbsp;
+      <a href="https://github.com/Cnkrru/rust-package" target="_blank">GitHub</a>
+    </p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.1/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/rust.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
