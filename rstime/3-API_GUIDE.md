@@ -12,6 +12,8 @@
 | `Weekday` | 星期枚举 | — |
 | `SystemClock` | 系统时钟 | — |
 | `MonotonicClock` | 单调时钟（计时用）| — |
+| `RstimeError` | 错误类型 | — |
+| `RstimeResult<T>` | `Result<T, RstimeError>` | — |
 
 ---
 
@@ -87,7 +89,12 @@ Duration::MINUTE   // 60 秒
 Duration::HOUR     // 3600 秒
 Duration::DAY      // 86400 秒
 
-let d = Duration::from_millis(1500);  // 1.5 秒
+// Duration 严格为正，使用 try_new 安全构造
+let d = Duration::try_new(1500, 0).unwrap();  // 1500 秒
+let d = Duration::from_millis(1500);           // 1.5 秒
+assert!(Duration::try_new(-1, 0).is_none());   // 负数返回 None
+
+// TimeDelta 支持负数
 let td = TimeDelta::new(-86400, 0);   // -1 天
 let abs = td.abs();                    // Duration(1天)
 ```
@@ -125,13 +132,34 @@ dt.format("{YYYY}-{MM}-{DD} {HH}:{mm}:{ss}");
 ## 解析
 
 ```rust
-use rstime::{parse_datetime, parse_iso8601};
+use rstime::{parse_datetime, parse_iso8601, RstimeResult};
 
-let dt = parse_iso8601("2026-05-10T14:05:09")?;
-let dt = parse_iso8601("2026-05-10")?;
-let dt = parse_iso8601("2026-05-10T14:05:09.037")?;
+fn example() -> RstimeResult<()> {
+    let dt = parse_iso8601("2026-05-10T14:05:09")?;
+    let dt = parse_iso8601("2026-05-10")?;
+    let dt = parse_iso8601("2026-05-10T14:05:09.037")?;
 
-let dt = parse_datetime("10/05/2026", "{DD}/{MM}/{YYYY}")?;
+    let dt = parse_datetime("10/05/2026", "{DD}/{MM}/{YYYY}")?;
+    Ok(())
+}
+```
+
+## RstimeError / RstimeResult
+
+所有解析函数统一返回 `RstimeResult<T>`（即 `Result<T, RstimeError>`），替代之前的裸 `String`：
+
+```rust
+use rstime::{RstimeError, RstimeResult, parse_iso8601};
+
+// 自定义错误类型，实现 Display + Error
+let err = RstimeError::new("invalid date");
+assert_eq!(err.to_string(), "invalid date");
+
+// RstimeResult 别名
+fn parse_date(s: &str) -> RstimeResult<()> {
+    let _ = parse_iso8601(s)?;
+    Ok(())
+}
 ```
 
 ---

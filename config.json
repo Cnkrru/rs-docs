@@ -1,0 +1,66 @@
+{
+  "rslog": {
+    "name": "rslog",
+    "title": "rslog - 日志库",
+    "accent": "#de6a2b",
+    "sections": [
+      { "title": "入门", "links": [
+        { "label": "首页", "md": "1-INDEX.md" },
+        { "label": "快速开始", "md": "2-README.md" },
+        { "label": "API 指南", "md": "3-API_GUIDE.md" }
+      ]},
+      { "title": "资源", "links": [
+        { "label": "GitHub 仓库", "href": "https://github.com/Cnkrru/rslog", "external": true },
+        { "label": "crates.io", "href": "https://crates.io/crates/rslog", "external": true },
+        { "label": "docs.rs", "href": "https://docs.rs/rslog", "external": true }
+      ]}
+    ]
+  },
+  "rscsv": {
+    "name": "rscsv",
+    "title": "rscsv - CSV 库",
+    "accent": "#4a90d9",
+    "sections": [
+      { "title": "入门", "links": [
+        { "label": "首页", "md": "1-INDEX.md" },
+        { "label": "快速开始", "md": "2-README.md" },
+        { "label": "API 指南", "md": "3-API_GUIDE.md" }
+      ]},
+      { "title": "资源", "links": [
+        { "label": "GitHub 仓库", "href": "https://github.com/Cnkrru/rust-package", "external": true }
+      ]}
+    ]
+  },
+  "rstime": {
+    "name": "rstime",
+    "title": "rstime - 时间库",
+    "accent": "#8e44ad",
+    "sections": [
+      { "title": "入门", "links": [
+        { "label": "首页", "md": "1-INDEX.md" },
+        { "label": "快速开始", "md": "2-README.md" },
+        { "label": "API 指南", "md": "3-API_GUIDE.md" }
+      ]},
+      { "title": "资源", "links": [
+        { "label": "GitHub 仓库", "href": "https://github.com/Cnkrru/rust-package", "external": true },
+        { "label": "crates.io", "href": "https://crates.io/crates/rstime", "external": true },
+        { "label": "docs.rs", "href": "https://docs.rs/rstime", "external": true }
+      ]}
+    ]
+  },
+  "rserror": {
+    "name": "rserror",
+    "title": "rserror - 错误处理库",
+    "accent": "#e74c3c",
+    "sections": [
+      { "title": "入门", "links": [
+        { "label": "首页", "md": "1-INDEX.md" },
+        { "label": "快速开始", "md": "2-README.md" },
+        { "label": "API 指南", "md": "3-API_GUIDE.md" }
+      ]},
+      { "title": "资源", "links": [
+        { "label": "GitHub 仓库", "href": "https://github.com/Cnkrru/rust-package", "external": true }
+      ]}
+    ]
+  }
+}

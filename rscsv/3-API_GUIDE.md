@@ -47,6 +47,10 @@ for result in reader.records() {
 }
 ```
 
+> **注意:** `CsvConfig` 已实现 `Debug` trait，可在调试时直接打印。
+
+> **v0.1.1 改进:** `needs_quoting` 现在感知 `trim` 配置。仅当 `trim: true` 时，前后空格才会触发自动加引号；当 `trim: false` 时保留原样不额外加引号，确保往返一致性。多行引用字段读取时也正确识别转义字符（`\`）后的引号。
+
 #### FileReader - 从文件读取
 
 ```rust

@@ -10,6 +10,7 @@ markdown rendering.
 | [rslog](https://github.com/Cnkrru/rslog) | A lightweight, zero-dependency logging library |
 | [rscsv](https://github.com/Cnkrru/rust-package) | A simple CSV library with RFC 4180 support |
 | [rstime](https://github.com/Cnkrru/rust-package) | A zero-dependency enhanced time library |
+| [rserror](https://github.com/Cnkrru/rust-package) | A simplified error handling library |
 
 ## Project Structure
 
@@ -30,6 +31,10 @@ rs-docs/
     ├── 1-INDEX.md
     ├── 2-README.md
     └── 3-API_GUIDE.md
+└── rserror/            # rserror documentation (Markdown)
+    ├── 1-INDEX.md
+    ├── 2-README.md
+    └── 3-API_GUIDE.md
 ```
 
 ## Features
@@ -40,7 +45,7 @@ rs-docs/
 - **Syntax Highlighting**: Uses [highlight.js](https://highlightjs.org/) for code block highlighting
 - **Hash-based Routing**: Page state is preserved in the URL hash for bookmarking and sharing
 - **Loading Indicator**: Visual progress bar for content loading
-- **Project Themes**: Each project has its own accent color (rslog: orange, rscsv: blue, rstime: purple)
+- **Project Themes**: Each project has its own accent color (rslog: orange, rscsv: blue, rstime: purple, rserror: red)
 
 ## Usage
 

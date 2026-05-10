@@ -9,59 +9,7 @@
   const loadingBar = document.getElementById('loading-bar');
   const sidebar = document.getElementById('sidebar');
 
-  const projects = {
-    rslog: {
-      name: 'rslog',
-      title: 'rslog - 日志库',
-      accent: '#de6a2b',
-      icon: '📋',
-      sections: [
-        { title: '入门', links: [
-          { label: '首页', md: '1-INDEX.md' },
-          { label: '快速开始', md: '2-README.md' },
-          { label: 'API 指南', md: '3-API_GUIDE.md' }
-        ]},
-        { title: '资源', links: [
-          { label: 'GitHub 仓库', href: 'https://github.com/Cnkrru/rslog', external: true },
-          { label: 'crates.io', href: 'https://crates.io/crates/rslog', external: true },
-          { label: 'docs.rs', href: 'https://docs.rs/rslog', external: true }
-        ]}
-      ]
-    },
-    rscsv: {
-      name: 'rscsv',
-      title: 'rscsv - CSV 库',
-      accent: '#4a90d9',
-      icon: '📊',
-      sections: [
-        { title: '入门', links: [
-          { label: '首页', md: '1-INDEX.md' },
-          { label: '快速开始', md: '2-README.md' },
-          { label: 'API 指南', md: '3-API_GUIDE.md' }
-        ]},
-        { title: '资源', links: [
-          { label: 'GitHub 仓库', href: 'https://github.com/Cnkrru/rust-package', external: true }
-        ]}
-      ]
-    },
-    rstime: {
-      name: 'rstime',
-      title: 'rstime - 时间库',
-      accent: '#8e44ad',
-      icon: '🕐',
-      sections: [
-        { title: '入门', links: [
-          { label: '首页', md: '1-INDEX.md' },
-          { label: '快速开始', md: '2-README.md' },
-          { label: 'API 指南', md: '3-API_GUIDE.md' }
-        ]},
-        { title: '资源', links: [
-          { label: 'GitHub 仓库', href: 'https://github.com/Cnkrru/rust-package', external: true }
-        ]}
-      ]
-    }
-  };
-
+  let projects = {};
   let currentProject = null;
   let currentMd = null;
 
@@ -77,7 +25,6 @@
       html += '<div class="sidebar-project" data-project="' + p.name + '">';
       html += '<div class="sidebar-project-header" data-project="' + p.name + '">';
       html += '<span class="arrow">&#9654;</span>';
-      html += '<span class="project-icon">' + p.icon + '</span>';
       html += '<span class="project-name">' + p.name + '</span>';
       html += '<span class="project-dot ' + p.name + '"></span>';
       html += '</div>';
@@ -283,7 +230,7 @@
 
   function initFromHash() {
     const hash = location.hash.replace('#', '');
-    let projectName = 'rslog';
+    let projectName = Object.keys(projects)[0] || '';
     let mdFile = null;
 
     if (hash) {
@@ -308,6 +255,17 @@
     loadPage(mdFile);
   }
 
-  initFromHash();
+  fetch('config.json')
+    .then(response => {
+      if (!response.ok) throw new Error('Failed to load config.json');
+      return response.json();
+    })
+    .then(data => {
+      projects = data;
+      initFromHash();
+    })
+    .catch(() => {
+      contentEl.innerHTML = '<h1>加载失败</h1><p>无法加载配置文件 config.json，请检查文件是否存在。</p>';
+    });
 
 })();

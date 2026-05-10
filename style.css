@@ -20,6 +20,7 @@
   --accent-rslog: #de6a2b;
   --accent-rscsv: #4a90d9;
   --accent-rstime: #8e44ad;
+  --accent-rserror: #e74c3c;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -108,8 +109,6 @@ body {
 
 .sidebar-project-header.expanded .arrow { transform: rotate(90deg); }
 
-.sidebar-project-header .project-icon { font-size: 16px; flex-shrink: 0; }
-
 .sidebar-project-header .project-name {
   font-size: 14px;
   font-weight: 600;
@@ -127,6 +126,7 @@ body {
 .sidebar-project-header .project-dot.rslog { background: var(--accent-rslog); }
 .sidebar-project-header .project-dot.rscsv { background: var(--accent-rscsv); }
 .sidebar-project-header .project-dot.rstime { background: var(--accent-rstime); }
+.sidebar-project-header .project-dot.rserror { background: var(--accent-rserror); }
 
 .sidebar-project-links {
   overflow: hidden;
@@ -163,6 +163,7 @@ body {
 .sidebar-link[data-project="rslog"].active { border-left-color: var(--accent-rslog); }
 .sidebar-link[data-project="rscsv"].active { border-left-color: var(--accent-rscsv); }
 .sidebar-link[data-project="rstime"].active { border-left-color: var(--accent-rstime); }
+.sidebar-link[data-project="rserror"].active { border-left-color: var(--accent-rserror); }
 
 .main-content {
   margin-top: var(--nav-height);

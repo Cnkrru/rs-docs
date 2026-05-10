@@ -110,6 +110,14 @@ rslog = { path = "../rslog", features = ["max_level_info"] }
 - `max_level_warn`
 - `max_level_error`
 
+## v0.1.4 改进
+
+- **Flush 通道分离:**
+  之前使用空 `LogEntry`（level="" + message=""）作为 flush 信号，现已改为专用 `FlushSignal` 通道，避免与正常日志条目混淆。
+  
+- **critical! 宏一致化:**
+  `critical!` 现在与其他级别宏使用相同的 `_log_enabled_critical!()` 辅助宏，而不是原始的 `MAX_LEVEL < 6` 比较。
+
 ## 更多资源
 
 - [快速开始](2-README.md)

@@ -16,14 +16,16 @@
 - **时钟功能** — 系统时钟获取当前时间、单调时钟用于计时
 - **星期计算** — 任意日期的星期几（蔡勒公式）
 - **闰年判断** — 内置闰年逻辑
+- **自定义错误类型** — `RstimeError` 替代裸 `String`
+- **安全时长构造** — `Duration::try_new()` 确保正值，负值返回 `None`
 - **零依赖** — 纯标准库实现
 
 ## 快速示例
 
 ```rust
-use rstime::{DateTime, Date, Time, Duration, TimeFormat};
+use rstime::{DateTime, Date, Duration, TimeFormat, RstimeResult};
 
-fn main() {
+fn main() -> RstimeResult<()> {
     let now = DateTime::now();
     println!("现在: {}", now);
 
@@ -34,9 +36,12 @@ fn main() {
     println!("明天: {}", tomorrow);
 
     println!("今天是: {}", Date::today().weekday());
+    Ok(())
 }
 ```
 
 ## 在线资源
 
 - [GitHub 仓库](https://github.com/Cnkrru/rust-package)
+- [crates.io](https://crates.io/crates/rstime)
+- [docs.rs](https://docs.rs/rstime)
